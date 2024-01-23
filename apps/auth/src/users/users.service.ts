@@ -21,4 +21,6 @@ export class UsersService {
       throw new UnauthorizedException('Invalid Credentials');
     return user;
   }
+
+  async getUser() {}
 }
