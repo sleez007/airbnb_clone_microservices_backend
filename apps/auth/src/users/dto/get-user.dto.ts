@@ -1,3 +1,7 @@
+import { IsNotEmpty, IsString } from 'class-validator';
+
 export class GetUserDto {
-  //@IsString()
+  @IsString()
+  @IsNotEmpty()
+  _id: string;
 }

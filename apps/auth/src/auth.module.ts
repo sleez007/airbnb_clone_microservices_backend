@@ -6,7 +6,7 @@ import { LoggerModule } from '@app/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
-import { LocalStategy } from './strategies';
+import { JwtStrategy, LocalStategy } from './strategies';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { LocalStategy } from './strategies';
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION: Joi.string().required(),
         HTTP_PORT: Joi.number().required(),
-        // TCP_PORT: Joi.number().required(),
+        TCP_PORT: Joi.number().required(),
       }),
     }),
     JwtModule.registerAsync({
@@ -33,6 +33,6 @@ import { LocalStategy } from './strategies';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStategy],
+  providers: [AuthService, LocalStategy, JwtStrategy],
 })
 export class AuthModule {}
